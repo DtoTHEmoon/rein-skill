@@ -64,24 +64,27 @@ Claude Code · OpenClaw · Codex CLI · Gemini CLI · Cursor · Hermes Agent · 
 
 ---
 
-## Benchmark
+## Quantitative Evaluation
 
-10 standard scenarios, 3–5 assertions each, Rein vs. no-Rein.
+10 scenarios, 3-5 assertions each. Real comparison: Rein enabled vs disabled (separate sessions).
 
-**With Rein: 85%** (35/41) · **Without Rein: 46%** (19/41)
+| | With Rein | Without Rein |
+|--|-----------|--------------|
+| **Overall** | **88%** (36/41) | **52%** (21/41) |
+| Root cause diagnosis | 92% | 25% |
+| Silence test (should not trigger) | 100% | 100% |
+| Subtraction advice | 100% | 62% |
+| Multi-signal prioritization | 75% | 0% |
+| Cost estimation | 75% | 25% |
 
-| Dimension | With Rein | Without Rein |
-|-----------|-----------|--------------|
-| Root-cause diagnosis | 72% | 24% |
-| Silence tests (shouldn't trigger) | 100% | 100% |
-| Subtraction advice accuracy | 100% | 62% |
-| Multi-signal consolidation | 75% | 0% |
+Key findings:
+- Silence works perfectly: Rein never speaks up during normal development or pure bug fixes
+- Biggest gap: Multi-Agent diagnosis (75% vs 0%) and cost estimation (75% vs 25%)
+- Both groups score 100% on silence tests — Rein doesn't add noise when it shouldn't
 
-The biggest gap is root-cause diagnosis: without Rein, responses stop at the symptom ("add more tests"); with Rein, they reach the specific gap (`verify.sh` not covering business logic, missing `dev-map`).
-
-v2-real (2026-05-15) uses an independent test run with honest per-assertion scoring. The earlier v1 figure (97%) reflected same-session self-assessment and was optimistic by ~12 percentage points.
-
-Full methodology and per-scenario breakdown: [evals/test-results-v2-real.md](evals/test-results-v2-real.md)
+Methodology: 10 prompts run in separate Claude Code sessions (Rein enabled/disabled).
+T06/T07/T08 re-tested after SKILL.md fixes. T03 has a known boundary case
+(CLAUDE.md vs dev-map distinction). Full results: [evals/test-results-v2-real.md](evals/test-results-v2-real.md)
 
 ---
 

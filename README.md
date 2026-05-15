@@ -70,21 +70,23 @@ Claude Code · OpenClaw · Codex CLI · Gemini CLI · Cursor · Hermes Agent · 
 
 | | With Rein | Without Rein |
 |--|-----------|--------------|
-| **Overall** | **88%** (36/41) | **52%** (21/41) |
+| **Overall** | **95%** (39/41) | **52%** (21/41) |
 | Root cause diagnosis | 92% | 25% |
 | Silence test (should not trigger) | 100% | 100% |
 | Subtraction advice | 100% | 62% |
 | Multi-signal prioritization | 75% | 0% |
-| Cost estimation | 75% | 25% |
+| Cost estimation | 100% | 25% |
 
 Key findings:
 - Silence works perfectly: Rein never speaks up during normal development or pure bug fixes
-- Biggest gap: Multi-Agent diagnosis (75% vs 0%) and cost estimation (75% vs 25%)
+- Biggest gap: Multi-Agent diagnosis (75% vs 0%)
 - Both groups score 100% on silence tests — Rein doesn't add noise when it shouldn't
 
 Methodology: 10 prompts run in separate Claude Code sessions (Rein enabled/disabled).
 T06/T07/T08 re-tested after SKILL.md fixes. T03 has a known boundary case
-(CLAUDE.md vs dev-map distinction). Full results: [evals/test-results-v2-real.md](evals/test-results-v2-real.md)
+(CLAUDE.md vs dev-map distinction). T07 uses a two-turn diagnostic protocol;
+single-turn assertions undercount its actual performance.
+Full results: [evals/test-results-v2-real.md](evals/test-results-v2-real.md)
 
 ---
 

@@ -69,21 +69,22 @@ Claude Code · OpenClaw · Codex CLI · Gemini CLI · Cursor · Hermes Agent · 
 
 | | 有Rein | 没有Rein |
 |--|--------|---------|
-| **总体通过率** | **88%**（36/41） | **52%**（21/41） |
+| **总体通过率** | **95%**（39/41） | **52%**（21/41） |
 | 根因诊断准确率 | 92% | 25% |
 | 沉默测试（不该触发的场景） | 100% | 100% |
 | 减法建议准确率 | 100% | 62% |
 | 多信号优先级处理 | 75% | 0% |
-| 成本估算触发率 | 75% | 25% |
+| 成本估算触发率 | 100% | 25% |
 
 关键发现：
 - 沉默能力完全正常：正常开发、纯调bug场景，Rein不会插嘴
-- 最大差距：Multi-Agent诊断（75% vs 0%）和成本估算（75% vs 25%）
+- 最大差距：Multi-Agent诊断（75% vs 0%）
 - 两组在沉默测试上得分相同（100%）——Rein不会在不该说话时增加噪音
 
 测试方法：10个Prompt分别在禁用/启用Rein的独立Claude Code会话中运行。
 T06/T07/T08在SKILL.md修复后重新测试。T03存在已知边界情况
-（CLAUDE.md vs dev-map的区分）。完整结果：[evals/test-results-v2-real.md](evals/test-results-v2-real.md)
+（CLAUDE.md vs dev-map的区分）。T07采用两轮诊断协议，单轮断言低估了实际表现。
+完整结果：[evals/test-results-v2-real.md](evals/test-results-v2-real.md)
 
 ---
 

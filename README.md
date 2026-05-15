@@ -1,14 +1,15 @@
 # Rein
 
-> 让AI在你的项目里跑得快、跑得准、跑得稳。
+> The silent Harness Engineering advisor that knows when to shut up.
 
-Rein是一个随项目全程的Harness Engineering顾问。它不是框架，不是工具——它是一个Skill，安装后在你的AI编程助手里持续感知项目的Harness状态，在刚好需要的时候给出刚好够用的建议。
+Rein is an always-on Harness Engineering skill for AI coding agents. It lives in your project, watches your conversations, and speaks up *only* when it detects a real gap — not when you're just writing code.
 
-**核心理念：大道至简。** 不乱加，够用就好。加法之前先问够不够，到一定程度了就考虑减。
+**Core philosophy: Less is more.** Don't add harness layers you don't need. Know when to subtract.
 
 ---
 
-## 安装
+## Install
+
 
 ```bash
 # Claude Code
@@ -21,81 +22,113 @@ git clone https://github.com/DtoTHEmoon/rein-skill.git ~/.openclaw/skills/rein
 git clone https://github.com/DtoTHEmoon/rein-skill.git ~/.codex/skills/rein
 ```
 
-重启Agent后生效。
+
+Restart your agent. Rein activates automatically — no commands needed.
 
 ---
 
-## 它做什么
+## What it does
 
-**不需要你主动问。** Rein在对话中自动感知以下信号：
+Rein watches for patterns, not keywords. It detects:
 
-- AI反复犯同类错误 → 诊断缺哪一层Rule或Script
-- 改完东西不知道有没有出问题 → 建议加验证脚本
-- 每次都要重新交代背景 → 建议完善CLAUDE.md或dev-map
-- 项目从内部工具变成对外交付 → 评估Harness是否需要升级
-- 配置越来越多但项目没变快 → 提示该做减法了
-- 问API成本为什么这么高 → 给出成本估算和节省建议
+- **Repeated failures** — same bug fixed twice → missing Rule or regression test
+- **Context loss** — re-explaining background every session → incomplete CLAUDE.md or dev-map
+- **Scale shifts** — internal tool going external → time to harden your harness
+- **Cost spikes** — API bill higher than expected → identifies token waste sources
+- **Over-engineering** — more config, slower shipping → tells you what to delete
 
-**它不做的事：** 不评业务需求，不给架构意见，不在你正常推进项目时插嘴。没有明显缺口，Rein保持沉默。
-
----
-
-## Harness六层模型
-
-Rein基于六层模型诊断你的项目：
-
-| 层 | 名称 | 解决什么 |
-|----|------|---------|
-| L1 | 规格 SPEC | AI知道做什么 |
-| L2 | 规则 Rule | AI知道不能做什么 |
-| L3 | 技能 Skill | 高频动作标准化 |
-| L4 | 验证 Scripts | 客观判断"做完了" |
-| L5 | 分工 Multi-Agent | 复杂任务角色分工 |
-| L6 | 知识库 dev-map | AI了解整个项目 |
-
-单人内部项目做到L4已经很扎实。不需要为了"完整"而上L5-L6。
+**What it never does:** comment on business decisions, review code quality, or speak up when everything's fine. Silence is a feature.
 
 ---
 
-## 兼容平台
+## The Six-Layer Model
 
-Claude Code · OpenClaw · Codex CLI · Gemini CLI · Cursor · Hermes Agent · 及所有支持SKILL.md标准的Agent
+Rein diagnoses your project against six harness layers:
 
----
+| Layer | Name | Solves |
+|-------|------|--------|
+| L1 | **SPEC** | AI knows what to build |
+| L2 | **Rules** | AI knows what never to do |
+| L3 | **Skills** | Repetitive workflows standardized |
+| L4 | **Scripts** | Objective "done" definition |
+| L5 | **Multi-Agent** | Role separation for complex tasks |
+| L6 | **dev-map** | AI understands the full project |
 
-## 案例
-
-**方舟AI项目（脱敏）**
-单人非技术背景，内部体检报价系统，从Dify迁移到FastAPI，3个月从0到生产。
-
-Rein在这个项目里起到的作用：
-- 发现部署流程缺乏验证层（L4），每次部署后要手动curl检查 → 加了verify.sh
-- 识别到CLAUDE.md开始膨胀 → 把部署铁律下沉到独立Skill
-- 评估Multi-Agent需求 → 判断当前规模不需要，节省了过度设计的时间
-
-> 更多案例见 `references/04-cases.md`
+Solo projects are solid at L4. Don't add L5-L6 just because they exist.
 
 ---
 
-## 知识库来源
+## Works with
 
-Rein的诊断逻辑整合自：
-- Anthropic Harness Engineering最佳实践
-- Martin Fowler "Relocating Rigor"
-- HumanLayer "Skill Issue"系列
-- 万字Harness Engineering工程化落地指南
-- 方舟AI项目真实踩坑记录
-
-持续更新，每周同步市面最新Harness实践。
+Claude Code · OpenClaw · Codex CLI · Gemini CLI · Cursor · Hermes Agent · any agent supporting the SKILL.md standard
 
 ---
 
-## 贡献
+## Real case
 
-欢迎提Issue或PR，尤其是：
-- 真实项目的Harness配置案例（可脱敏）
-- 发现的新触发模式
-- 成本估算数据校正
+**Internal AI quoting system** — solo developer, non-technical background, 3 months from zero to production.
+
+What Rein caught:
+- No verification after deployment → added `verify.sh`, zero-guess deploys
+- CLAUDE.md ballooning past 150 lines → moved deploy rules to a dedicated Skill
+- Multi-Agent temptation → diagnosed as unnecessary, saved weeks of over-engineering
+
+Full case: [references/04-cases.md](references/04-cases.md)
+
+---
+
+## When Rein speaks up
+
+Rein activates on patterns — not on you asking for it:
+
+- AI repeating the same mistake twice
+- You re-explaining context that should already be documented
+- Project scope expanding (new users, external delivery, new team members)
+- Harness complexity growing faster than shipping speed
+- API costs climbing without obvious reason
+
+Rein stays silent during normal development. A good session with Rein is often one where it said nothing.
+
+---
+
+## When Rein tells you to *remove* things
+
+Rein monitors for over-engineering signals:
+
+| Signal | Action |
+|--------|--------|
+| CLAUDE.md > 150 lines, AI still ignores rules | Move rules to Scripts |
+| Rules keep growing, problems don't shrink | Upgrade to verification scripts |
+| 5+ Skills with overlapping functions | Merge and delete |
+| Multi-Agent slower than single agent | Roll back |
+| Harness maintenance > feature shipping | Start subtracting |
+
+> If your harness is slowing you down, it's time to cut.
+
+---
+
+## Knowledge base
+
+Rein's diagnostic logic is distilled from:
+
+- Anthropic Harness Engineering research
+- Martin Fowler — "Relocating Rigor"
+- HumanLayer — "Skill Issue" series
+- Addy Osmani — "Agent Harness Engineering"
+- Real production failures from a 3-month solo build
+
+Updated weekly with the latest harness engineering practices.
+
+---
+
+## Contribute
+
+PRs welcome, especially:
+- Real project Harness configs (anonymized is fine)
+- New pattern triggers you've discovered
+- Cost estimation corrections
+
+[中文版](README.zh.md)
 
 ---
 

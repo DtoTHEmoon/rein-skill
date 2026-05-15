@@ -12,13 +12,13 @@ Rein是一个随项目全程的Harness Engineering顾问。它不是框架，不
 
 ```bash
 # Claude Code
-git clone https://github.com/DtoTHEmoon/rein.git ~/.claude/skills/rein
+git clone https://github.com/DtoTHEmoon/rein-skill.git ~/.claude/skills/rein
 
 # OpenClaw
-git clone https://github.com/DtoTHEmoon/rein.git ~/.openclaw/skills/rein
+git clone https://github.com/DtoTHEmoon/rein-skill.git ~/.openclaw/skills/rein
 
 # Codex CLI
-git clone https://github.com/DtoTHEmoon/rein.git ~/.codex/skills/rein
+git clone https://github.com/DtoTHEmoon/rein-skill.git ~/.codex/skills/rein
 ```
 
 重启Agent后生效。

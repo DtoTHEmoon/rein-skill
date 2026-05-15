@@ -1,5 +1,9 @@
 # Harness Engineering 知识库
 
+> 本知识库整合了以下作者的公开文章中的核心洞察，所有内容均已注明原始来源。
+> Rein六层模型主要来源：万字Harness Engineering工程化落地文章（作者：白家杰，腾讯云开发者）
+> 如有异议请提Issue。
+
 市面上Harness Engineering核心知识的精华整理。持续更新。
 最后更新：2026-05-15
 

@@ -68,18 +68,20 @@ Claude Code · OpenClaw · Codex CLI · Gemini CLI · Cursor · Hermes Agent · 
 
 10 standard scenarios, 3–5 assertions each, Rein vs. no-Rein.
 
-**With Rein: 97%** (40/41) · **Without Rein: 46%** (19/41)
+**With Rein: 85%** (35/41) · **Without Rein: 46%** (19/41)
 
 | Dimension | With Rein | Without Rein |
 |-----------|-----------|--------------|
-| Root-cause diagnosis | 96% | 24% |
+| Root-cause diagnosis | 72% | 24% |
 | Silence tests (shouldn't trigger) | 100% | 100% |
 | Subtraction advice accuracy | 100% | 62% |
 | Multi-signal consolidation | 75% | 0% |
 
 The biggest gap is root-cause diagnosis: without Rein, responses stop at the symptom ("add more tests"); with Rein, they reach the specific gap (`verify.sh` not covering business logic, missing `dev-map`).
 
-Full methodology and per-scenario breakdown: [evals/test-results-v1.md](evals/test-results-v1.md)
+v2-real (2026-05-15) uses an independent test run with honest per-assertion scoring. The earlier v1 figure (97%) reflected same-session self-assessment and was optimistic by ~12 percentage points.
+
+Full methodology and per-scenario breakdown: [evals/test-results-v2-real.md](evals/test-results-v2-real.md)
 
 ---
 

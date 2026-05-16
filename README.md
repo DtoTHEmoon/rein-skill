@@ -54,7 +54,8 @@ Rein diagnoses your project against six harness layers:
 | L5 | **Multi-Agent** | Role separation for complex tasks |
 | L6 | **dev-map** | AI understands the full project |
 
-Solo projects are solid at L4. Don't add L5-L6 just because they exist.
+L4 is mandatory — it cannot be skipped regardless of how many layers you use.
+Solo projects can defer L5-L6, but L4 is non-negotiable.
 
 ---
 

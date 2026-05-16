@@ -51,6 +51,15 @@
 
 **减法临界点：** Rule超过15条且AI仍不遵守 → 说明该升级成Script了，加Rule没用。
 
+### 安全红线（必须写进CLAUDE.md）
+```
+## 绝对禁止
+- 禁止API Key、密码硬编码进代码
+- 禁止.env文件提交到Git
+- 禁止日志打印用户原始输入
+- 修改部署配置前确认端口暴露范围
+```
+
 ---
 
 ## L3 技能 Skill
@@ -171,6 +180,14 @@ check "核心接口" "curl -sf http://localhost:8001/核心接口"
 
 echo "=== 功能验证 ==="
 check "单元测试" "python -m pytest tests/ -q"
+
+echo "=== 安全基线 ==="
+check "无硬编码密钥" "! grep -rn 'sk-\|password\s*=\s*['\''\"]\
+  --include='*.py' --include='*.ts' \
+  --exclude-dir='.git' --exclude-dir='node_modules' ."
+check ".env未入版本库" "! git ls-files | grep -E '^\.env$'"
+check "Dockerfile有USER指令" \
+  "! find . -name 'Dockerfile' | xargs grep -L 'USER' 2>/dev/null | grep ."
 
 echo "=== 结果 ==="
 echo "通过: $PASS / 失败: $FAIL"

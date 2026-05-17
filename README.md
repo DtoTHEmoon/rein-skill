@@ -41,21 +41,42 @@ Rein watches for patterns, not keywords. It detects:
 
 ---
 
-## The Six-Layer Model
+## Framework
 
-Rein diagnoses your project against six harness layers:
+Rein uses two dimensions — not six steps.
+
+### Vertical Quality Layers (Q) — required for every project
 
 | Layer | Name | Solves |
 |-------|------|--------|
-| L1 | **SPEC** | AI knows what to build |
-| L2 | **Rules** | AI knows what never to do |
-| L3 | **Skills** | Repetitive workflows standardized |
-| L4 | **Scripts** | Objective "done" definition |
-| L5 | **Multi-Agent** | Role separation for complex tasks |
-| L6 | **dev-map** | AI understands the full project |
+| Q1 | **SPEC** | AI knows what to build, what not to, and how to verify |
+| Q2 | **Rules + Security** | Business red lines + security red lines, equally mandatory |
+| Q3 | **Skills** | Repetitive workflows standardized, with counter-examples |
+| Q4 | **Scripts (unified gate)** | Final verification for ALL layers — nothing is done without this |
 
-L4 is mandatory — it cannot be skipped regardless of how many layers you use.
-Solo projects can defer L5-L6, but L4 is non-negotiable.
+### Horizontal Scale Layers (S) — enable only when needed
+
+| Layer | Name | When to enable |
+|-------|------|---------------|
+| S1 | **Context** | Sessions losing coherence after ~20 turns, or API costs spiking |
+| S2 | **dev-map + Memory** | Project iterating 2+ months, AI re-inventing existing solutions |
+| S3 | **Multi-Agent** | Single agent consistently failing on long task chains |
+
+### How Q4 works as the unified gate
+
+```
+Q1 → Q2 → Q3 ──┐
+S1 ─────────────┤→ Q4 (gate) → done
+S2 ─────────────┤
+S3 ─────────────┘
+```
+
+Q4 is not step four. It is the exit gate for every layer.
+Code changes, S2 doc updates, S3 agent outputs — all must pass Q4.
+Q4 must include security baseline checks (no hardcoded secrets, .env not committed).
+Q2 security red lines without corresponding Q4 checks are just suggestions.
+S1-S3 are optional. Enable only when you have a real pain point.
+Not having S3 is not a gap — it is appropriate sizing.
 
 ---
 

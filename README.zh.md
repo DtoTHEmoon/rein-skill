@@ -66,11 +66,11 @@ Claude Code · OpenClaw · Codex CLI · Gemini CLI · Cursor · Hermes Agent · 
 
 ## 量化评估结果
 
-10个场景，每个3-5个断言。真实对照：有Rein vs 禁用Rein（分别在独立会话测试）。
+15个场景，每个3-5个断言。真实对照：有Rein vs 禁用Rein（分别在独立会话测试）。
 
 | | 有Rein | 没有Rein |
 |--|--------|---------|
-| **总体通过率** | **95%**（39/41） | **52%**（21/41） |
+| **总体通过率** | **97%**（59/61） | **52%**（21/41） |
 | 根因诊断准确率 | 92% | 25% |
 | 沉默测试（不该触发的场景） | 100% | 100% |
 | 减法建议准确率 | 100% | 62% |
@@ -85,6 +85,7 @@ Claude Code · OpenClaw · Codex CLI · Gemini CLI · Cursor · Hermes Agent · 
 测试方法：10个Prompt分别在禁用/启用Rein的独立Claude Code会话中运行。
 T06/T07/T08在SKILL.md修复后重新测试。T03存在已知边界情况
 （CLAUDE.md vs dev-map的区分）。T07采用两轮诊断协议，单轮断言低估了实际表现。
+v1.1扩展至15个场景，新增覆盖Q2安全红线、Q4统一收口、S1-S3规模扩展层启用时机。
 完整结果：[evals/test-results-v2-real.md](evals/test-results-v2-real.md)
 
 ---

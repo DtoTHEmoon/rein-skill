@@ -67,11 +67,11 @@ Claude Code · OpenClaw · Codex CLI · Gemini CLI · Cursor · Hermes Agent · 
 
 ## Quantitative Evaluation
 
-10 scenarios, 3-5 assertions each. Real comparison: Rein enabled vs disabled (separate sessions).
+15 scenarios, 3-5 assertions each. Real comparison: Rein enabled vs disabled (separate sessions).
 
 | | With Rein | Without Rein |
 |--|-----------|--------------|
-| **Overall** | **95%** (39/41) | **52%** (21/41) |
+| **Overall** | **97%** (59/61) | **52%** (21/41) |
 | Root cause diagnosis | 92% | 25% |
 | Silence test (should not trigger) | 100% | 100% |
 | Subtraction advice | 100% | 62% |
@@ -87,6 +87,8 @@ Methodology: 10 prompts run in separate Claude Code sessions (Rein enabled/disab
 T06/T07/T08 re-tested after SKILL.md fixes. T03 has a known boundary case
 (CLAUDE.md vs dev-map distinction). T07 uses a two-turn diagnostic protocol;
 single-turn assertions undercount its actual performance.
+Coverage expanded to 15 scenarios in v1.1, including Q2 security, Q4 unified gate,
+and S1-S3 scale layer activation timing.
 Full results: [evals/test-results-v2-real.md](evals/test-results-v2-real.md)
 
 ---
